@@ -91,4 +91,11 @@ public class ReceiptController {
                 .contentType(MediaType.APPLICATION_OCTET_STREAM)
                 .body(resource);
     }
+
+    @PostMapping("/delete/{id}")
+    public String deleteReceipt(@PathVariable Long id) {
+        receiptService.deleteReceipt(id);
+        return "redirect:/list";
+    }
+
 }

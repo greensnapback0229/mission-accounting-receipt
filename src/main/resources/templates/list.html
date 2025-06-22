@@ -15,6 +15,12 @@
                    class="text-blue-700 text-base font-semibold hover:underline"
                    th:text="${receipt.title}">영수증 제목</a>
                 <p class="text-sm text-gray-600 mt-1" th:text="'결제인: ' + ${receipt.payer}">결제인</p>
+
+                <form th:action="@{'/delete/' + ${receipt.id}}" method="post" class="mt-2">
+                    <button type="submit"
+                            class="text-sm text-red-500 hover:underline"
+                            onclick="return confirm('정말 삭제하시겠습니까?')">삭제</button>
+                </form>
             </li>
         </ul>
     </div>

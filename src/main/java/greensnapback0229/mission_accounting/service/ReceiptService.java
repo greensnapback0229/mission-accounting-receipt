@@ -62,4 +62,17 @@ public class ReceiptService {
         return receiptRepository.findById(id).orElseThrow(() ->
                 new IllegalArgumentException("해당 ID의 영수증이 존재하지 않습니다: " + id));
     }
+
+    public void deleteReceipt(Long id) {
+        Receipt receipt = receiptRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("영수증이 존재하지 않습니다: " + id));
+
+        // 파일 삭제 (옵션)
+        File file = new File(receipt.getImagePath());
+        if (file.exists()) {
+            file.delete();
+        }
+
+        receiptRepository.deleteById(id);
+    }
 }
