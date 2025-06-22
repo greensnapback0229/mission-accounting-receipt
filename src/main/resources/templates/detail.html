@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: head}"></head>
+<body>
+
+<!-- ✅ content 파라미터에 'detail :: content' 전달 -->
+<div th:replace="~{fragments/header :: body(content='detail :: content')}">
+
+  <div th:fragment="content">
+    <h2 class="text-xl font-bold mb-4" th:text="${receipt.title}">영수증 제목</h2>
+
+    <div class="mb-4">
+      <img th:src="@{'/pic/' + ${receipt.id}}" alt="영수증 이미지" class="w-full rounded border" />
+    </div>
+
+    <div class="mb-2">
+      <strong class="text-sm">설명:</strong>
+      <p class="text-sm text-gray-700" th:text="${receipt.description}">설명</p>
+    </div>
+
+    <div class="mb-2">
+      <strong class="text-sm">결제인:</strong>
+      <p class="text-sm text-gray-700" th:text="${receipt.payer}">결제인</p>
+    </div>
+
+    <a th:href="@{'/pic/' + ${receipt.id}}" download
+       class="mt-4 inline-block bg-green-600 text-white text-sm px-4 py-2 rounded hover:bg-green-700">
+      다운로드
+    </a>
+  </div>
+
+</div>
+</body>
+</html>

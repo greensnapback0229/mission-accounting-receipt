@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: head}"></head>
+<body>
+
+<!-- ✅ content 파라미터에 'list :: content' 전달 -->
+<div th:replace="~{fragments/header :: body(content='list :: content')}">
+
+    <div th:fragment="content">
+        <h2 class="text-xl font-bold mb-4">영수증 목록</h2>
+
+        <ul class="space-y-2">
+            <li th:each="receipt : ${receipts}" class="p-4 bg-white rounded shadow hover:bg-gray-50">
+                <a th:href="@{'/view/' + ${receipt.id}}"
+                   class="text-blue-700 text-base font-semibold hover:underline"
+                   th:text="${receipt.title}">영수증 제목</a>
+                <p class="text-sm text-gray-600 mt-1" th:text="'결제인: ' + ${receipt.payer}">결제인</p>
+            </li>
+        </ul>
+    </div>
+
+</div>
+</body>
+</html>

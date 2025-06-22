@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+    <meta charset="UTF-8">
+    <title>영수증 업로드</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+<nav class="bg-white shadow p-4">
+    <div class="max-w-md mx-auto flex justify-between">
+        <a href="/list" class="text-lg font-bold text-blue-600">📄 영수증</a>
+        <div class="space-x-4 text-sm">
+            <a href="/upload" class="text-blue-600 hover:underline">업로드</a>
+            <a href="/list" class="text-blue-600 hover:underline">목록</a>
+        </div>
+    </div>
+</nav>
+
+<!-- ✅ 여기에 명시적으로 파라미터 이름 정의 -->
+<div th:fragment="body(content)">
+    <div class="max-w-md mx-auto px-4 py-6">
+        <th:block th:replace="~{__${content}__}"></th:block>
+    </div>
+</div>
+
+</body>
+</html>

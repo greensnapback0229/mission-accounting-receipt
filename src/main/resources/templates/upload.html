@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: head}"></head>
+<body>
+
+<!-- ✅ 파라미터 content 이름으로 넘기기 -->
+<div th:replace="~{fragments/header :: body(content='upload :: content')}">
+
+    <div th:fragment="content">
+        <h2 class="text-xl font-bold mb-4">영수증 업로드</h2>
+
+        <form method="post" enctype="multipart/form-data" action="/upload" class="space-y-4">
+            <div>
+                <label class="block text-sm">영수증 이미지</label>
+                <input type="file" name="file" accept="image/*" class="w-full border p-2 rounded" required />
+            </div>
+            <div>
+                <label class="block text-sm">요약 제목</label>
+                <input type="text" name="title" class="w-full border p-2 rounded" required />
+            </div>
+            <div>
+                <label class="block text-sm">설명</label>
+                <textarea name="description" class="w-full border p-2 rounded"></textarea>
+            </div>
+            <div>
+                <label class="block text-sm">결제인</label>
+                <input type="text" name="payer" class="w-full border p-2 rounded" required />
+            </div>
+            <button type="submit" class="w-full bg-blue-600 text-white p-2 rounded">업로드</button>
+        </form>
+
+        <div th:if="${error}" class="text-red-600 mt-4 text-sm" th:text="${error}"></div>
+    </div>
+</div>
+
+</body>
+</html>
