@@ -48,15 +48,11 @@ public class ReceiptController {
     public String uploadReceipt(@RequestParam("file") MultipartFile file,
                                 @RequestParam("title") String title,
                                 @RequestParam("description") String description,
-                                @RequestParam("payer") String payer,
-                                Model model) {
-        try {
-            receiptService.saveReceipt(file, title, description, payer);
-            return "redirect:/list";
-        } catch (IOException | IllegalArgumentException e) {
-            model.addAttribute("error", e.getMessage());
-            return "upload";
-        }
+                                @RequestParam("payer") String payer) throws IOException {
+
+        Receipt savedReceipt = receiptService.saveReceipt(file, title, description, payer);
+
+        return "redirect:/view/" + savedReceipt.getId();
     }
 
     // 목록 페이지
