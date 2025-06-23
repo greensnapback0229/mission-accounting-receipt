@@ -32,6 +32,8 @@ public class ReceiptController {
 
     @GetMapping("/")
     public String showReceipt(Model model) {
+        List<Receipt> receipts = receiptService.getAllReceipts();
+        model.addAttribute("receipts", receipts);
         return "list";
     }
 
