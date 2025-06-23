@@ -27,6 +27,21 @@
        class="mt-4 inline-block bg-green-600 text-white text-sm px-4 py-2 rounded hover:bg-green-700">
       다운로드
     </a>
+
+    <button id="copyUrlButton" class="mt-4 inline-block bg-blue-600 text-white text-sm px-4 py-2 rounded hover:bg-blue-700">
+      URL 복사
+    </button>
+
+    <script>
+      document.getElementById("copyUrlButton").addEventListener("click", function() {
+        const url = window.location.href; // 현재 페이지 URL
+        navigator.clipboard.writeText(url).then(function() {
+          alert("URL이 복사되었습니다!");
+        }).catch(function(error) {
+          alert("URL 복사에 실패했습니다.");
+        });
+      });
+    </script>
   </div>
 
 </div>
