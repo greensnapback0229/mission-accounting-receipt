@@ -3,7 +3,6 @@
 <head th:replace="~{fragments/header :: head}"></head>
 <body>
 
-<!-- ✅ 파라미터 content 이름으로 넘기기 -->
 <div th:replace="~{fragments/header :: body(content='upload :: content')}">
 
     <div th:fragment="content">
@@ -16,11 +15,11 @@
             </div>
             <div>
                 <label class="block text-sm">청구 정보 요약</label>
-                <input type="text" name="title" class="w-full border p-2 rounded" required />
+                <input type="text" name="title" class="w-full border p-2 rounded" required placeholder="ex) 교육팀 과학 교보재 구입"/>
             </div>
             <div>
                 <label class="block text-sm">설명</label>
-                <textarea name="description" class="w-full border p-2 rounded" placeholder="결제처/구입항목/N명(누구, 누구) - 기타 정보"></textarea>
+                <textarea name="description" class="w-full border p-2 rounded" >결제처/구입항목/N명(누구, 누구) - 기타 정보</textarea>
             </div>
             <div>
                 <label class="block text-sm">결제인</label>
